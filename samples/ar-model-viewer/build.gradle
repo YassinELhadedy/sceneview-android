@@ -48,4 +48,19 @@ dependencies {
 
     // Material
     implementation 'com.google.android.material:material:1.5.0'
+
+    // Obj - a simple Wavefront OBJ file loader
+    // https://github.com/javagl/Obj
+    implementation 'de.javagl:obj:0.2.1'
+
+    // If you want to use the base sdk
+    implementation 'com.google.mlkit:pose-detection:18.0.0-beta2'
+    // If you want to use the accurate sdk
+    implementation 'com.google.mlkit:pose-detection-accurate:18.0.0-beta2'
+
+    //coro
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.20'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1'
 }
