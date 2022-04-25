@@ -12,7 +12,6 @@ import com.google.ar.core.Coordinates2d
 import com.google.ar.core.Frame
 import com.google.ar.core.exceptions.NotYetAvailableException
 import com.google.mlkit.vision.pose.Pose
-import com.google.mlkit.vision.pose.PoseLandmark
 import io.github.sceneview.ar.ArSceneView
 import io.github.sceneview.ar.node.ArModelNode
 import io.github.sceneview.ar.node.EditableTransform
@@ -61,7 +60,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             loadModelAsync(
                 context = requireContext(),
                 glbFileLocation = "models/spiderbot.glb",
-                coroutineScope = lifecycleScope,
+                lifecycle = lifecycle,
                 autoAnimate = true,
                 autoScale = false,
                 // Place the model origin at the bottom center
@@ -94,6 +93,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     objectResults = null
 
 
+//                    val anchors = objects.allPoseLandmarks.mapNotNull { landMark ->
+//                        val (atX, atY) = landMark.position.x to landMark.position.y
+//                        Log.i("#YASDEBUG", "Created Pose ${atX} , ${atY}from hit test")
+//                        val anchor = createAnchor(atX, atY, it.frame) ?: return@mapNotNull null
+//                        Log.i("#YASDEBUG", "Created type ${landMark?.landmarkType.toString()}from hit test")
+//                        Log.i("#YASDEBUG", "Created anchor ${anchor?.pose} from hit test")
+//                    }
 
                     val anchors = listOf(objects.getPoseLandmark(0)).mapNotNull { landMark ->
                         val (atX, atY) = landMark?.position?.x to landMark?.position?.y
